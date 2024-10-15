@@ -14,4 +14,4 @@ class ShopDeliveryAreaSubDocument:
 class ShopDocument(BaseDocument):
     name: str
     category_codes: list[CategoryCode] # 카테고리 코드는 개수 제한을 두자.
-    delivery_areas: list[ShopDeliveryAreaSubDocument]
+    delivery_areas: list[ShopDeliveryAreaSubDocument] # 배달구역
