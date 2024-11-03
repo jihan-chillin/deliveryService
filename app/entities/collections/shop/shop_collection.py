@@ -9,9 +9,9 @@ from app.entities.collections.shop.shop_document import (
 )
 from app.utils.mongo import db
 
-
 class ShopCollection:
-    _collection = AsyncIOMotorCollection(db, "shops")
+    """Shop 컬렉션에 쿼리날릴 수 있는 메소드를 정의하는 클래스."""
+    _collection = AsyncIOMotorCollection(db, "shops") # shops : 컬렉션이름 지정
 
     @classmethod
     async def insert_one(
@@ -24,7 +24,6 @@ class ShopCollection:
                 "delivery_areas" : [asdict(da) for da in delivery_areas]
             }
         )
-
         
         return ShopDocument(
             _id=result.inserted_id,
