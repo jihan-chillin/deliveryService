@@ -4,8 +4,8 @@ from app.entities.collections.shop.shop_collection import ShopCollection
 from app.entities.collections.shop.shop_document import ShopDeliveryAreaSubDocument
 
 
-async def test_shop_insert_one() -> None:
-    # Given
+async  def test_shop_insert_one() -> None:
+    # Given - 가정임
     name = "치킨집"
     category_codes = [CategoryCode.CHICKEN]
     delivery_areas = [
@@ -15,11 +15,9 @@ async def test_shop_insert_one() -> None:
     ]
 
     # When
-    shop = await ShopCollection.insert_one(name=name, category_codes=category_codes, delivery_areas=delivery_areas)
+    shop = await ShopCollection.insert_one(name, category_codes, delivery_areas)
     # results = await ShopCollection._collection.find({name : "치킨집"}).to_list(None)
-    cursor = await ShopCollection._collection.find({}).to_list(None)
-    # results = await cursor.to_list(None)
-    results = await cursor.to_list(100) # LIMIT 100
+    results = await ShopCollection._collection.find({}).to_list(None)
 
     # Then
     assert len(results) == 1
